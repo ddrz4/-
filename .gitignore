@@ -321,3 +321,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# pycache
+.pyc
+__pycache__
