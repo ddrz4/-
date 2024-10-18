@@ -8,5 +8,6 @@ users = Table(
     metadata,
     Column("id", Integer, primary_key=True, autoincrement=True, nullable=False),
     Column("name", String, primary_key=True, nullable=False),
-    Column("password", String,  nullable=False),
+    Column("email", String, nullable=False),
+    Column("hashed_password", String,  nullable=False),
 )
