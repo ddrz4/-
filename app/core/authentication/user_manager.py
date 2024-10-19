@@ -3,13 +3,13 @@ from typing import (
     Optional,
     TYPE_CHECKING,
 )
-from app.core.config import settings
+from core.config import settings
 from fastapi_users import (
     BaseUserManager,
     IntegerIDMixin
 )
-from app.core.models.user import User
-from app.core.types.user_id import UserIdType
+from core.models.user import User
+from core.types.user_id import UserIdType
 if TYPE_CHECKING:
     from fastapi import Request
 

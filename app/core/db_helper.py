@@ -7,8 +7,8 @@ from typing import AsyncGenerator
 from .config import settings
 
 
-class DBHelper:
-    def engine(
+class DBHelper():
+    def __init__(
         self,
         url: str,
         echo: bool = False,

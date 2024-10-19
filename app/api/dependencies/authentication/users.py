@@ -4,8 +4,8 @@ from typing import (
 )
 from fastapi import Depends
 from fastapi_users.db import SQLAlchemyUserDatabase
-from app.core.db_helper import DBHelper
-from app.core.models.user import User
+from core.db_helper import DBHelper
+from core.models.user import User
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 

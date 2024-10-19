@@ -1,4 +1,4 @@
-from app.core.authentication.user_manager import UserManager
+from core.authentication.user_manager import UserManager
 from fastapi import Depends
 from .users import get_user_db
 from typing import (
