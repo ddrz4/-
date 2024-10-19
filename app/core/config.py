@@ -2,11 +2,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import BaseModel
 
 
-class RunConfig(BaseModel):
-    host: str = "0.0.0.0"
-    port: int = 8000
-
-
 class DBConfig(BaseSettings):
     DB_HOST: str
     DB_PORT: int
@@ -26,9 +21,13 @@ class DBConfig(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env")
 
 
+class AccessToken(BaseModel):
+    lifetime_seconds: int = 3600
+
+
 class Settings(BaseModel):
     db: DBConfig = DBConfig()
-    run: RunConfig = RunConfig()
+    access_token: AccessToken = AccessToken()
 
 
 settings = Settings()
