@@ -6,18 +6,15 @@ from fastapi_users.db import (
     SQLAlchemyUserDatabase,
 )
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import DeclarativeBase
 from .mixins.id_int_pk import IdIntPkMixin
-
+from .base import Base
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
+from app.core.types.user_id import UserIdType
 
 
-class Base(DeclarativeBase):
-    pass
 
-
-class User(Base, IdIntPkMixin, SQLAlchemyBaseUserTable[int]):
+class User(Base, IdIntPkMixin, SQLAlchemyBaseUserTable[UserIdType]):
 
     @classmethod
     def get_db(cls, session: "AsyncSession"):
