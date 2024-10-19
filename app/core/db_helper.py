@@ -40,7 +40,7 @@ class DBHelper:
 
 
 db_helper = DBHelper(
-    url=str(settings.db.db_url_asyncpg),
+    url=str(settings.db.DB_URL),
     echo=settings.db.echo,
     echo_pool=settings.db.echo_pool,
     pool_size=settings.db.pool_size,
