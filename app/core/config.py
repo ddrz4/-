@@ -2,16 +2,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import BaseModel
 
 
-class DBConfig(BaseModel):
-    DB_HOST: str
-    DB_PORT: int
-    DB_USER: str
-    DB_PASS: str
-    DB_NAME: str
-
-    @property
-    def db_url_asyncpg(self):
-        return f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+class DBConfig(BaseSettings):
+    DB_URL: str
     
     echo: bool = False
     echo_pool: bool = False
@@ -21,7 +13,7 @@ class DBConfig(BaseModel):
     model_config = SettingsConfigDict(env_file=".env")
 
 
-class AccessToken(BaseModel):
+class AccessToken(BaseSettings):
     lifetime_seconds: int = 3600
     RESET_PASSWORD_TOKEN_SECRET: str
     VEREFICATION_TOKEN_SECRET: str
@@ -29,9 +21,22 @@ class AccessToken(BaseModel):
     model_config = SettingsConfigDict(env_file=".env")
 
 
+class ApiV1Prefix(BaseModel):
+    prefix: str = "/v1"
+    auth: str = "/auth"
+    users: str = "/users"
+    messages: str = "/messages"
+
+
+class ApiPrefix(BaseModel):
+    prefix: str = "/api"
+    v1: ApiV1Prefix = ApiV1Prefix()
+
+
 class Settings(BaseSettings):
     db: DBConfig = DBConfig()
     access_token: AccessToken = AccessToken()
+    api: ApiPrefix = ApiPrefix()
 
 
 settings = Settings()
