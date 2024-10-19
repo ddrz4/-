@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import BaseModel
 
 
-class DBConfig(BaseSettings):
+class DBConfig(BaseModel):
     DB_HOST: str
     DB_PORT: int
     DB_USER: str
@@ -23,9 +23,13 @@ class DBConfig(BaseSettings):
 
 class AccessToken(BaseModel):
     lifetime_seconds: int = 3600
+    RESET_PASSWORD_TOKEN_SECRET: str
+    VEREFICATION_TOKEN_SECRET: str
+
+    model_config = SettingsConfigDict(env_file=".env")
 
 
-class Settings(BaseModel):
+class Settings(BaseSettings):
     db: DBConfig = DBConfig()
     access_token: AccessToken = AccessToken()
 
