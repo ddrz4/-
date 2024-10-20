@@ -1,5 +1,5 @@
 from fastapi_users import schemas
-from app.core.types.user_id import UserIdType
+from core.types.user_id import UserIdType
 
 
 class UserRead(schemas.BaseUser[UserIdType]):
@@ -7,7 +7,7 @@ class UserRead(schemas.BaseUser[UserIdType]):
 
 
 class UserCreate(schemas.BaseUserCreate):
-    pass
+    name: str
 
 
 class UserUpdate(schemas.BaseUserUpdate):

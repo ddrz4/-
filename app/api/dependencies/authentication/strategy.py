@@ -4,10 +4,9 @@ from typing import (
 )
 from fastapi import Depends
 from fastapi_users.authentication.strategy.db import DatabaseStrategy
-from core.models.user import User
 from core.models.access_token import AccessToken
 from core.config import settings
-from .access_tokens import get_access_token_db
+from core.models.access_token import get_access_token_db
 if TYPE_CHECKING:
     from app.core.models.access_token import AccessToken
     from fastapi_users.authentication.strategy.db import AccessTokenDatabase
