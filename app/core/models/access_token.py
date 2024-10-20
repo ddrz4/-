@@ -1,3 +1,4 @@
+from datetime import datetime
 from fastapi import Depends
 from fastapi_users_db_sqlalchemy.access_token import (
     SQLAlchemyAccessTokenDatabase,
@@ -6,6 +7,7 @@ from fastapi_users_db_sqlalchemy.access_token import (
 from sqlalchemy import (
     Integer,
     ForeignKey,
+    String,
 )
 from .base import Base
 from core.types.user_id import UserIdType
@@ -15,13 +17,24 @@ from sqlalchemy.orm import (
 )
 from core.models.user import get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi_users_db_sqlalchemy.generics import TIMESTAMPAware, now_utc
 
 
-class AccessToken(Base, SQLAlchemyBaseAccessTokenTable[UserIdType]):  
+class AccessToken(Base, SQLAlchemyBaseAccessTokenTable[UserIdType]):
+    token: Mapped[str] = mapped_column(
+        String(length=43),
+        primary_key=True,
+        nullable=False
+    )
+    created_at: Mapped[datetime] = mapped_column(
+            TIMESTAMPAware(timezone=True),
+            nullable=False,
+            default=now_utc
+        )
     user_id: Mapped[UserIdType] = mapped_column(
         Integer,
         ForeignKey("user.id", ondelete="cascade"),
-        nullable=False,
+        nullable=False
     )
 
 
