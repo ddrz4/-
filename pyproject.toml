@@ -10,3 +10,4 @@ pydantic-settings = "^2.5.2"
 fastapi-users = {extras = ["sqlalchemy"], version = "^13.0.0"}
 uvicorn = "^0.32.0"
 asyncio = "^3.4.3"
+python-dotenv = "^1.0.1"

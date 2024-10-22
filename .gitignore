@@ -293,7 +293,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+app/.env
 
 *.DS_Store
 .AppleDouble

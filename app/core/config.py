@@ -2,9 +2,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import BaseModel
 
 
+class
+
+
 class DBConfig(BaseSettings):
+    #url
     DB_URL: str
-    
+
     echo: bool = False
     echo_pool: bool = False
     pool_size: int = 50
@@ -16,7 +20,7 @@ class DBConfig(BaseSettings):
 class AccessToken(BaseSettings):
     lifetime_seconds: int = 3600
     RESET_PASSWORD_TOKEN_SECRET: str
-    VEREFICATION_TOKEN_SECRET: str
+    VERIFICATION_TOKEN_SECRET: str
 
     model_config = SettingsConfigDict(env_file=".env")
 
