@@ -11,7 +11,7 @@ from core.config import settings
 
 
 engine = create_async_engine(
-    url=settings.db.db_url_asyncpg,
+    url=settings.db.DB_URL,
     echo=settings.db.echo,
     echo_pool=settings.db.echo_pool,
     pool_size=settings.db.pool_size,

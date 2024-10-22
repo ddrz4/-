@@ -9,13 +9,13 @@ from sqlalchemy import (
     ForeignKey,
     String,
 )
-from base import Base
-from app.core.types.user_id import UserIdType
+from .base import Base
+from core.types.user_id import UserIdType
 from sqlalchemy.orm import (
     Mapped,
     mapped_column,
 )
-from app.core.models.user import get_async_session
+from core.models.user import get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi_users_db_sqlalchemy.generics import TIMESTAMPAware, now_utc
 

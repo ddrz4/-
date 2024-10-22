@@ -2,9 +2,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import BaseModel
 
 
-class
-
-
 class DBConfig(BaseSettings):
     #url
     DB_URL: str
@@ -14,15 +11,16 @@ class DBConfig(BaseSettings):
     pool_size: int = 50
     max_overflow: int = 10
 
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 
 class AccessToken(BaseSettings):
     lifetime_seconds: int = 3600
+
     RESET_PASSWORD_TOKEN_SECRET: str
     VERIFICATION_TOKEN_SECRET: str
 
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 
 class ApiV1Prefix(BaseModel):
