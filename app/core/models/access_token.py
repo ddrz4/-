@@ -9,7 +9,7 @@ from sqlalchemy import (
     ForeignKey,
     String,
 )
-from .base import Base
+from core.models.base import Base
 from core.types.user_id import UserIdType
 from sqlalchemy.orm import (
     Mapped,

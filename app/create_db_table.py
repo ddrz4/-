@@ -10,5 +10,3 @@ def create_table():
    metadata.create_all(sync_engine)
 
 create_table()
-
-#check how work git in pyCharm

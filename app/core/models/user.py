@@ -5,9 +5,9 @@ from fastapi_users_db_sqlalchemy import (
     SQLAlchemyUserDatabase,
 )
 from sqlalchemy.ext.asyncio import AsyncSession
-from .mixins.id_int_pk import IdIntPkMixin
+from core.models.mixins.id_int_pk import IdIntPkMixin
 from core.models.mixins.name_str_pk import NameStrPkMixin
-from .base import Base
+from core.models.base import Base
 from core.types.user_id import UserIdType
 from core.db_helper import session_factory
 if TYPE_CHECKING:
