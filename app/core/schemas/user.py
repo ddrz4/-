@@ -3,7 +3,7 @@ from core.types.user_id import UserIdType
 
 
 class UserRead(schemas.BaseUser[UserIdType]):
-    pass
+    name: str
 
 
 class UserCreate(schemas.BaseUserCreate):
@@ -11,4 +11,4 @@ class UserCreate(schemas.BaseUserCreate):
 
 
 class UserUpdate(schemas.BaseUserUpdate):
-    pass
+    name: str
